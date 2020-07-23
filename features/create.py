@@ -41,14 +41,14 @@ class Embarked(Feature):
 class Fare(Feature):
     def create_features(self):
         data = train.append(test)
-        fare_mean = data['Fare'].mean()
+        fare_median = data['Fare'].median()
         self.train['Fare'] = pd.qcut(
-            train['Fare'].fillna(fare_mean),
+            train['Fare'].fillna(fare_median),
             4,
             labels=False
         )
         self.test['Fare'] = pd.qcut(
-            test['Fare'].fillna(fare_mean),
+            test['Fare'].fillna(fare_median),
             4,
             labels=False
         )
