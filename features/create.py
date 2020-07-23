@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import re as re
+import feather
 
 from base import Feature, get_arguments, generate_features
 
@@ -128,7 +129,7 @@ class Title(Feature):
 if __name__ == '__main__':
     args = get_arguments()
 
-    train = pd.read_feather('./data/input/train.feather')
-    test = pd.read_feather('./data/input/test.feather')
+    train = feather.read_dataframe('./data/input/train.feather')
+    test = feather.read_dataframe('./data/input/test.feather')
 
     generate_features(globals(), args.force)
