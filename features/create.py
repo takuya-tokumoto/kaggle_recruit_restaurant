@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import re as re
-import feather
 
 from base import Feature, get_arguments, generate_features
 
@@ -41,14 +40,14 @@ class Embarked(Feature):
 class Fare(Feature):
     def create_features(self):
         data = train.append(test)
-        fare_median = data['Fare'].median()
+        fare_mean = data['Fare'].mean()
         self.train['Fare'] = pd.qcut(
-            train['Fare'].fillna(fare_median),
+            train['Fare'].fillna(fare_mean),
             4,
             labels=False
         )
         self.test['Fare'] = pd.qcut(
-            test['Fare'].fillna(fare_median),
+            test['Fare'].fillna(fare_mean),
             4,
             labels=False
         )
@@ -129,7 +128,7 @@ class Title(Feature):
 if __name__ == '__main__':
     args = get_arguments()
 
-    train = feather.read_dataframe('./data/input/train.feather')
-    test = feather.read_dataframe('./data/input/test.feather')
+    train = pd.read_feather('./data/input/train.feather')
+    test = pd.read_feather('./data/input/test.feather')
 
     generate_features(globals(), args.force)
