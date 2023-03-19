@@ -1,0 +1,2 @@
+# kaggle_recruit_restaurant
+Recruit Restaurant Visitor Forecastingのコンペ解法
