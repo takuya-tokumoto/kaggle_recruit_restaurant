@@ -98,3 +98,6 @@ etc.
 - `calendar_date`
 - `day_of_week`
 - `holiday_flg` - 日本の祝日情報
+
+# 引用 
+https://github.com/MaxHalford/kaggle-recruit-restaurant
